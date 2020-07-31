@@ -1,0 +1,5 @@
+<template>
+    <c-custom-lookup-error-msg if:true={errorState}></c-custom-lookup-error-msg>
+    <c-custom-lookup-u-i selected-id={selectedId} label-required={labelRequired} sobject-type={sobjectType} query-fields={queryFields} search-fields={searchFields} object-description={objectDescriptionFetched} if:true={appWorkingState}></c-custom-lookup-u-i>
+    <lightning-spinner  variant='brand' alternative-text="Loading" size="medium" if:true={isLoading}></lightning-spinner>
+</template>

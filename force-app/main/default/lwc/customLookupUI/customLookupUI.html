@@ -1,0 +1,76 @@
+<template>
+    <div class="slds-form-element">
+        <label class="slds-form-element__label" for="combobox-id-2">{fieldLabel}</label>
+        <div class="slds-form-element__control">
+            <div class="slds-combobox_container comboBoxContainer">
+                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+                    aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none" if:false={isSelected}>
+                        <input type="text" class="slds-input slds-combobox__input slds-has-focus inputText" id="combobox-id-2"
+                            aria-autocomplete="list" aria-controls="listbox-id-2" autocomplete="off" role="textbox"
+                            placeholder={placeholder} onkeyup={handleSearchKey}/>
+                        <span
+                            class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
+                            <p>
+                                <lightning-icon icon-name="utility:search" alternative-text="Search" title="Search"
+                                    size='x-small'></lightning-icon>
+                            </p>
+                        </span>
+                    </div>
+                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right" role="none" if:true={isSelected}>
+                        <span class="slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon" title={sobjectType}>
+                            <p>
+                                <lightning-icon icon-name="custom:custom7" size='small'
+                                    alternative-text={sobjectType} title={sobjectType}></lightning-icon>
+                            </p>
+                          <span class="slds-assistive-text">{sobjectType}</span>
+                        </span>
+                        <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-5" aria-controls="listbox-id-5" autocomplete="off" role="textbox" placeholder="Select an Option" readonly="" value={selectedRec.fieldOne} />
+                        <button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" title="Remove selected option">
+                            <p>
+                                <lightning-icon onclick={handleRemoveSelection} icon-name="utility:close" size='x-small'
+                                    alternative-text="close" title="close"></lightning-icon>
+                            </p>
+                          <span class="slds-assistive-text">Remove selected option</span>
+                        </button>
+                      </div>
+                    <div id="listbox-id-2" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid"
+                        role="listbox" if:true={recordExist}>
+                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                            <template for:each={recordsFetched} for:item='sobjectRec' for:index='index'>
+                            <li role="presentation" data-index={index} onclick={handleSelectedRec} class="slds-listbox__item" key={sobjectRec.sobjectRec}>
+                                <div 
+                                    class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                                    role="option">
+                                    <span class="slds-media__figure slds-listbox__option-icon">
+                                        <span class="slds-icon_container slds-icon-standard-account">
+                                            <!-- <svg class="slds-icon slds-icon_small" aria-hidden="true">
+        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
+        </svg> -->
+                                            <p>
+                                                <lightning-icon icon-name="custom:custom7" size='small'
+                                                    alternative-text="Search" title="Search"></lightning-icon>
+                                            </p>
+                                        </span>
+                                    </span>
+                                    <span class="slds-media__body">
+                                        <span
+                                            class="slds-listbox__option-text slds-listbox__option-text_entity">
+                                            {sobjectRec.fieldOne}</span>
+                                        <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{sobjectRec.fieldFour}</span>
+                                    </span>
+                                </div>
+                            </li>
+                            </template>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</template>
